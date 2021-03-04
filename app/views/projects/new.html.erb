@@ -1,0 +1,23 @@
+<h1>Formulario de proyectos</h1>
+<% if @project.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+                <%= pluralize(@project.errors.count, "error") %> prohibited this
+                post from being saved:</h2>
+                <ul>
+                <% @project.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+<%= form_with model: @project do |form| %>
+  <%= form.text_field :name, class:'form-control', placeholder: 'Nombre' %>
+  <%= form.text_area :description, size: "60x10",class:'form-control', placeholder: 'Descripción' %>
+  <%= form.date_field :started_at, class:'form-control' %>
+  <%= form.date_field :ended_at, class:'form-control' %>
+  <%= form.select :status, [["Propuesta", :proposal], ["Progreso", :progress], ["Terminado", :finished]],{}, class:'form-control' %>
+  <br>
+  <%= form.submit 'Enviar', class: 'btn btn-primary' %>
+<% end %>
