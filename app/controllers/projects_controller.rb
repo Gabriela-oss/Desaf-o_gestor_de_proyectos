@@ -1,6 +1,10 @@
 class ProjectsController < ApplicationController
+  http_basic_authenticate_with name: "dhh", password: "secret", only:[:new] 
   def index
     @projects = Project.all
+    puts "\n\n\n\n\n\n==================================================="
+    puts params
+    puts "\n\n\n\n\n\n"
     if params[:status] != 'all' 
       @projects = @projects.where(status: params[:status])
     end

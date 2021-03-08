@@ -1,4 +1,4 @@
-<h1>Formulario de proyectos</h1>
+<h1>Form of projects</h1>
 <% if @project.errors.any? %>
         <div id="error_explanation">
             <h2>
@@ -13,8 +13,8 @@
     <% end %>
 
 <%= form_with model: @project do |form| %>
-  <%= form.text_field :name, class:'form-control', placeholder: 'Nombre' %>
-  <%= form.text_area :description, size: "60x10",class:'form-control', placeholder: 'Descripción' %>
+  <%= form.text_field :name, class:'form-control', placeholder: 'Nombre' %><br>
+  <%= form.text_area :description, size: "60x10",class:'form-control', placeholder: 'Descripción' %><br>
   <%= form.date_field :started_at, class:'form-control' %>
   <%= form.date_field :ended_at, class:'form-control' %>
   <%= form.select :status, [["Propuesta", :proposal], ["Progreso", :progress], ["Terminado", :finished]],{}, class:'form-control' %>
